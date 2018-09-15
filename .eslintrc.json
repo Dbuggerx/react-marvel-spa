@@ -1,0 +1,3 @@
+{
+  "extends": ["react-app", "@endouble.com/eslint-config-endouble/react"]
+}

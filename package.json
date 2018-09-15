@@ -92,7 +92,7 @@
       "react-app"
     ]
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "devDependencies": {
+    "@endouble.com/eslint-config-endouble": "^1.2.1"
   }
 }
