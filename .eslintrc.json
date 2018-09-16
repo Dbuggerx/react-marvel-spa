@@ -1,3 +1,8 @@
 {
-  "extends": ["react-app", "@endouble.com/eslint-config-endouble/react"]
+  "plugins": ["flowtype"],
+  "extends": [
+    "react-app",
+    "@endouble.com/eslint-config-endouble/react",
+    "plugin:flowtype/recommended"
+  ]
 }
