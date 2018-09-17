@@ -57,6 +57,10 @@
     "flow": "flow"
   },
   "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "setupTestFrameworkScriptFile": "<rootDir>/enzymeSetup.js",
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,mjs}"
     ],
@@ -97,7 +101,9 @@
   },
   "devDependencies": {
     "@endouble.com/eslint-config-endouble": "^1.2.1",
-    "flow-bin": "^0.81.0",
-    "react-test-renderer": "^16.5.1"
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
+    "enzyme-to-json": "^3.3.4",
+    "flow-bin": "^0.81.0"
   }
 }

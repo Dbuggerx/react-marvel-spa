@@ -9,7 +9,7 @@ type Props = {
     getThumbnailUrl: (hero: Hero) => string,
 };
 
-export default (props: Props) => (
+const HeroesList = (props: Props) => (
     <div>
         {props.heroes.map(hero => (
             <HeroCard
@@ -20,3 +20,7 @@ export default (props: Props) => (
         ))}
     </div>
 );
+
+HeroesList.displayName = 'HeroesList';
+
+export default HeroesList;

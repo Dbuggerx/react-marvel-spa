@@ -2,4 +2,8 @@
 
 import React from 'react';
 
-export default () => (<h1>Loading...</h1>);
+const LoadingIndicator = () => (<h1>Loading...</h1>);
+
+LoadingIndicator.displayName = 'LoadingIndicator';
+
+export default LoadingIndicator;

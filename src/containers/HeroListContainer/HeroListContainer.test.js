@@ -1,5 +1,5 @@
 import React from 'react';
-import TestRenderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 import HeroListContainer from './index';
 import { fetchHeros, getImageUrl } from '../../services/marvelApi';
 
@@ -15,22 +15,19 @@ describe('HeroListContainer', () => {
         // A simple mocked Promise will do to test the loading message
         fetchHeros.mockReturnValue(Promise.resolve());
 
-        const renderer = TestRenderer.create(<HeroListContainer />);
-        expect(renderer.toJSON()).toMatchSnapshot();
-        renderer.unmount();
+        const wrapper = shallow(<HeroListContainer />);
+        expect(wrapper).toMatchSnapshot();
     });
 
     test('it renders an error message', (done) => {
         // Simulate an error
         fetchHeros.mockReturnValue(Promise.reject(new Error('Testing an error')));
 
-        const container = <HeroListContainer />;
-        const renderer = TestRenderer.create(container);
+        const wrapper = shallow(<HeroListContainer />);
 
         process.nextTick(() => {
-            renderer.update(container);
-            expect(renderer.toJSON()).toMatchSnapshot();
-            renderer.unmount();
+            wrapper.update();
+            expect(wrapper).toMatchSnapshot();
             done();
         });
     });
@@ -71,16 +68,11 @@ describe('HeroListContainer', () => {
             },
         }));
 
-        // Using the real implementation for 'getImageUrl'
-        getImageUrl.mockImplementation(require.requireActual('../../services/marvelApi').getImageUrl);
-
-        const container = <HeroListContainer />;
-        const renderer = TestRenderer.create(container);
+        const wrapper = shallow(<HeroListContainer />);
 
         process.nextTick(() => {
-            renderer.update(container);
-            expect(renderer.toJSON()).toMatchSnapshot();
-            renderer.unmount();
+            wrapper.update();
+            expect(wrapper).toMatchSnapshot();
             done();
         });
     });

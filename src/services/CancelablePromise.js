@@ -1,5 +1,9 @@
 // @flow
 
+/**
+ * A promise wrapper to handle cancelation
+ * @see https://reactjs.org/blog/2015/12/16/ismounted-antipattern.html
+ */
 export default class CancelablePromise<T> {
     constructor(promise: Promise<T>) {
         this.promise = new Promise((resolve, reject) => {

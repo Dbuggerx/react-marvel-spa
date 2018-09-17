@@ -1,36 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HeroListContainer it renders a loading message 1`] = `
-<h1>
-  Loading...
-</h1>
-`;
+exports[`HeroListContainer it renders a loading message 1`] = `<LoadingIndicator />`;
 
 exports[`HeroListContainer it renders an error message 1`] = `
-<h1>
-  Error loading heroes
-</h1>
+<ErrorMessage
+  message="Error loading heroes"
+/>
 `;
 
 exports[`HeroListContainer it renders heroes 1`] = `
 <div>
-  <div>
-    <div>
-      <img
-        alt="3-D Man"
-        src="http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784/standard_medium.jpg?apikey=570b1cdca67e5243b4db4425b1b4ee4e"
-      />
-      Name: 
-      3-D Man
-    </div>
-    <div>
-      <img
-        alt="A-Bomb (HAS)"
-        src="http://i.annihil.us/u/prod/marvel/i/mg/3/20/5232158de5b16/standard_medium.jpg?apikey=570b1cdca67e5243b4db4425b1b4ee4e"
-      />
-      Name: 
-      A-Bomb (HAS)
-    </div>
-  </div>
+  <HeroesList
+    getThumbnailUrl={[Function]}
+    heroes={
+      Array [
+        Object {
+          "description": "",
+          "id": 1011334,
+          "modified": "2014-04-29T14:18:17-0400",
+          "name": "3-D Man",
+          "thumbnail": Object {
+            "extension": "jpg",
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784",
+          },
+        },
+        Object {
+          "description": "Rick Jones has been Hulk's best bud since day one, but now he's more than a friend...he's a teammate! Transformed by a Gamma energy explosion, A-Bomb's thick, armored skin is just as strong and powerful as it is blue. And when he curls into action, he uses it like a giant bowling ball of destruction! ",
+          "id": 1017100,
+          "modified": "2013-09-18T15:54:04-0400",
+          "name": "A-Bomb (HAS)",
+          "thumbnail": Object {
+            "extension": "jpg",
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/3/20/5232158de5b16",
+          },
+        },
+      ]
+    }
+  />
 </div>
 `;

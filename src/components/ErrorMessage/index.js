@@ -6,4 +6,8 @@ type Props = {
     message: string,
 };
 
-export default (props: Props) => (<h1>{props.message}</h1>);
+const ErrorMessage = (props: Props) => (<h1>{props.message}</h1>);
+
+ErrorMessage.displayName = 'ErrorMessage';
+
+export default ErrorMessage;
