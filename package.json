@@ -53,6 +53,7 @@
     "build": "node scripts/build.js",
     "lint": "node scripts/lint.js",
     "test": "node scripts/test.js --env=jsdom",
+    "coverage": "node scripts/test.js --env=jsdom --coverage",
     "flow": "flow"
   },
   "jest": {
@@ -96,6 +97,7 @@
   },
   "devDependencies": {
     "@endouble.com/eslint-config-endouble": "^1.2.1",
-    "flow-bin": "^0.81.0"
+    "flow-bin": "^0.81.0",
+    "react-test-renderer": "^16.5.1"
   }
 }

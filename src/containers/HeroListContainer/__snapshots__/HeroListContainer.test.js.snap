@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeroListContainer it renders a loading message 1`] = `
+<h1>
+  Loading...
+</h1>
+`;
+
+exports[`HeroListContainer it renders an error message 1`] = `
+<h1>
+  Error loading heroes
+</h1>
+`;
+
+exports[`HeroListContainer it renders heroes 1`] = `
+<div>
+  <div>
+    <div>
+      <img
+        alt="3-D Man"
+        src="http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784/standard_medium.jpg?apikey=570b1cdca67e5243b4db4425b1b4ee4e"
+      />
+      Name: 
+      3-D Man
+    </div>
+    <div>
+      <img
+        alt="A-Bomb (HAS)"
+        src="http://i.annihil.us/u/prod/marvel/i/mg/3/20/5232158de5b16/standard_medium.jpg?apikey=570b1cdca67e5243b4db4425b1b4ee4e"
+      />
+      Name: 
+      A-Bomb (HAS)
+    </div>
+  </div>
+</div>
+`;
