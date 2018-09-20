@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 // @flow
 
 import React from 'react';
@@ -7,16 +9,15 @@ import type { Hero } from '../services/types';
 type Props = {
     heroes: Hero[],
     getThumbnailUrl: (hero: Hero) => string,
+    onHeroClick: (event: SyntheticEvent<*>) => void,
 };
 
 const HeroesList = (props: Props) => (
     <div>
         {props.heroes.map(hero => (
-            <HeroCard
-                hero={hero}
-                key={hero.id}
-                imageUrl={props.getThumbnailUrl(hero)}
-            />
+            <div onClick={props.onHeroClick} key={hero.id} id={hero.id} data-hero-name={hero.name}>
+                <HeroCard hero={hero} imageUrl={props.getThumbnailUrl(hero)} />
+            </div>
         ))}
     </div>
 );

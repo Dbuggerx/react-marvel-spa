@@ -36,6 +36,7 @@ exports[`HeroListContainer it renders heroes 1`] = `
         },
       ]
     }
+    onHeroClick={[Function]}
   />
 </div>
 `;
