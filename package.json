@@ -104,6 +104,8 @@
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
     "enzyme-to-json": "^3.3.4",
-    "flow-bin": "^0.81.0"
+    "flow-bin": "^0.81.0",
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0"
   }
 }

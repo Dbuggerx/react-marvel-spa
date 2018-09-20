@@ -1,5 +1,5 @@
 [ignore]
-
+.*/node_modules/.*
 [include]
 
 [libs]
@@ -8,4 +8,6 @@
 
 [options]
 module.file_ext=.js
+module.file_ext=.scss
+emoji=true
 [strict]
