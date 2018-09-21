@@ -61,6 +61,7 @@
       "enzyme-to-json/serializer"
     ],
     "setupTestFrameworkScriptFile": "<rootDir>/enzymeSetup.js",
+    "collectCoverage": true,
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,mjs}"
     ],
@@ -71,7 +72,7 @@
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
       "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}"
     ],
-    "testEnvironment": "node",
+    "testEnvironment": "jsdom",
     "testURL": "http://localhost",
     "transform": {
       "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest",

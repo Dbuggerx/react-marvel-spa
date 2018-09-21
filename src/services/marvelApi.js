@@ -15,18 +15,22 @@ async function getJsonFromUrl(url: string) {
     return response.json();
 }
 
-export async function fetchHeros(offset: number = 0): Promise<HeroesResult> {
-    const url = `https://gateway.marvel.com:443/v1/public/characters?offset=${offset}&apikey=${apiKey}`;
+export async function fetchHeros(limit: number, offset: number = 0): Promise<HeroesResult> {
+    const url = `https://gateway.marvel.com/v1/public/characters?limit=${limit}&offset=${offset}&apikey=${apiKey}`;
     return getJsonFromUrl(url);
 }
 
 export async function fetchHeroById(id: number): Promise<HeroesResult> {
-    const url = `https://gateway.marvel.com:443/v1/public/characters/${id}/?apikey=${apiKey}`;
+    const url = `https://gateway.marvel.com/v1/public/characters/${id}?apikey=${apiKey}`;
     return getJsonFromUrl(url);
 }
 
-export async function fetchHeroSearch(nameStartsWith: string, offset: number = 0): Promise<HeroesResult> {
-    const url = `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${nameStartsWith}&offset=${offset}&apikey=${apiKey}`;
+export async function fetchHeroSearch(
+    nameStartsWith: string,
+    limit: number,
+    offset: number = 0,
+): Promise<HeroesResult> {
+    const url = `https://gateway.marvel.com/v1/public/characters?limit=${limit}&offset=${offset}&nameStartsWith=${nameStartsWith}&apikey=${apiKey}`;
     return getJsonFromUrl(url);
 }
 
