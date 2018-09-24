@@ -6,25 +6,38 @@ import LoadingIndicator from '../../components/LoadingIndicator';
 import HeroList from '../../components/HeroList';
 import HeroDetails from '../../components/HeroDetails';
 import Modal from '../../components/Modal';
+import PaginationContainer from '../PaginationContainer';
 import CancelablePromise from '../../services/CancelablePromise';
 import type { Hero } from '../../services/types';
+
+type Props = {
+    pageSize: number,
+};
 
 type State = {
     isLoading: boolean,
     heroes: Hero[],
     error?: string,
-    selectedHero: ?Hero,
-    selectedHeroImageUrl: ?string,
+    selection: ?{
+        hero: Hero,
+        imageUrl: string,
+    },
+    pagination: ?{
+        offset: number,
+        limit: number,
+        total: number,
+        count: number,
+    },
 };
 
-export default class HeroListContainer extends Component<void, State> {
-    constructor(props: void) {
+export default class HeroListContainer extends Component<Props, State> {
+    constructor(props: Props) {
         super(props);
         this.state = {
             heroes: [],
-            selectedHero: null,
-            selectedHeroImageUrl: null,
             isLoading: true,
+            selection: null,
+            pagination: null,
         };
     }
 
@@ -44,25 +57,41 @@ export default class HeroListContainer extends Component<void, State> {
 
     handleHeroClick = (hero: Hero) => {
         this.setState({
-            selectedHero: hero,
-            selectedHeroImageUrl: getImageUrl(hero, 'big'),
+            selection: {
+                hero,
+                imageUrl: getImageUrl(hero, 'big'),
+            },
         });
     };
 
     handleCloseModal = () => {
         this.setState({
-            selectedHero: null,
-            selectedHeroImageUrl: null,
+            selection: null,
         });
     };
 
-    async fetchMarvelHeroes() {
+    fetchHeroesPage = (page: number) => {
+        this.fetchMarvelHeroes({
+            offset: this.props.pageSize * (page - 1),
+        });
+    };
+
+    async fetchMarvelHeroes(params?: { offset: number, nameStartsWith?: string }) {
         try {
-            this.cancelableFetch = new CancelablePromise(fetchHeros(10));
+            this.cancelableFetch = new CancelablePromise(fetchHeros({
+                limit: this.props.pageSize,
+                ...params,
+            }));
             const heroesResult = await this.cancelableFetch.promise;
             this.setState({
                 heroes: heroesResult.data.results,
                 isLoading: false,
+                pagination: {
+                    offset: heroesResult.data.offset,
+                    limit: heroesResult.data.limit,
+                    total: heroesResult.data.total,
+                    count: heroesResult.data.total,
+                },
             });
         } catch (error) {
             if (error.message !== CancelablePromise.errorMessage) {
@@ -82,9 +111,9 @@ export default class HeroListContainer extends Component<void, State> {
         }
         return (
             <div>
-                {this.state.selectedHero && (
-                    <Modal title={this.state.selectedHero.name} close={this.handleCloseModal}>
-                        <HeroDetails hero={this.state.selectedHero} imageUrl={this.state.selectedHeroImageUrl || ''} />
+                {this.state.selection && (
+                    <Modal title={this.state.selection.hero.name} close={this.handleCloseModal}>
+                        <HeroDetails hero={this.state.selection.hero} imageUrl={this.state.selection.imageUrl || ''} />
                     </Modal>
                 )}
                 <HeroList
@@ -92,6 +121,9 @@ export default class HeroListContainer extends Component<void, State> {
                     heroes={this.state.heroes}
                     getThumbnailUrl={this.getThumbnailUrl}
                 />
+                {this.state.pagination && (
+                    <PaginationContainer {...this.state.pagination} goToPage={this.fetchHeroesPage} />
+                )}
             </div>
         );
     }

@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react';
+import type { StatelessFunctionalComponent } from 'react';
 import NameList from '../NameList';
 import type { Hero } from '../../services/types';
 
@@ -22,13 +23,11 @@ const renderLinksFor = (
     (collection.items.length > 0 ? (
         <div>
             <h2>{collectionName}</h2>
-            <NameList
-                names={collection.items.map(c => c.name)}
-            />
+            <NameList names={collection.items.map(c => c.name)} />
         </div>
     ) : null);
 
-const HeroDetails = (props: Props) => (
+const HeroDetails: StatelessFunctionalComponent<Props> = (props: Props) => (
     <div>
         <div>
             <img src={props.imageUrl} alt="Loading..." />

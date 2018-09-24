@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import HeroListContainer from './index';
+import HeroListContainer from '.';
 import { fetchHeros, getImageUrl } from '../../services/marvelApi';
 
 jest.mock('../../services/marvelApi');
 
-describe('HeroListContainer', () => {
+describe('HeroesContainer', () => {
     beforeEach(() => {
         fetchHeros.mockClear();
         getImageUrl.mockClear();
@@ -30,6 +30,15 @@ describe('HeroListContainer', () => {
             expect(wrapper).toMatchSnapshot();
             done();
         });
+    });
+
+    test('it renders the modal', () => {
+        // Simulate an error
+        // A simple mocked Promise will do to test the loading message
+        fetchHeros.mockReturnValue(Promise.resolve());
+
+        const wrapper = shallow(<HeroListContainer />);
+        expect(wrapper).toMatchSnapshot();
     });
 
     test('it renders heroes', (done) => {

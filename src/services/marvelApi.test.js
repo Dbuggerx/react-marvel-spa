@@ -31,12 +31,17 @@ describe('marvelApi', () => {
         });
 
         test('it returns correct JSON', async () => {
-            const result = await marvelApi.fetchHeros();
+            const result = await marvelApi.fetchHeros({
+                limit: 10,
+            });
             expect(result).toEqual(successHeroesResult);
         });
 
         test('it calls the endpoint with correct params', async () => {
-            await marvelApi.fetchHeros(10, 20);
+            await marvelApi.fetchHeros({
+                limit: 10,
+                offset: 20,
+            });
             expect(window.fetch).toHaveBeenCalledWith(expect.stringMatching(new RegExp(`${heroesEndpoint}\\?limit=10\\&offset=20\\&apikey=.{32}`)));
         });
 
@@ -44,7 +49,7 @@ describe('marvelApi', () => {
             mockFetchError('Testing an error');
             expect.assertions(1);
             try {
-                await marvelApi.fetchHeros();
+                await marvelApi.fetchHeros({ limit: 10 });
             } catch (e) {
                 expect(e.message).toEqual('Testing an error');
             }
@@ -71,32 +76,6 @@ describe('marvelApi', () => {
             expect.assertions(1);
             try {
                 await marvelApi.fetchHeroById();
-            } catch (e) {
-                expect(e.message).toEqual('Testing an error');
-            }
-        });
-    });
-
-    describe('fetchHeroSearch', () => {
-        beforeEach(() => {
-            mockFetchResult(successHeroesResult);
-        });
-
-        test('it returns correct JSON', async () => {
-            const result = await marvelApi.fetchHeroSearch('test');
-            expect(result).toEqual(successHeroesResult);
-        });
-
-        test('it calls the endpoint with correct params', async () => {
-            await marvelApi.fetchHeroSearch('test', 5, 10);
-            expect(window.fetch).toHaveBeenCalledWith(expect.stringMatching(new RegExp(`${heroesEndpoint}\\?limit=5\\&offset=10\\&nameStartsWith=test\\&apikey=.{32}`)));
-        });
-
-        test('it throws error containing the statusText', async () => {
-            mockFetchError('Testing an error');
-            expect.assertions(1);
-            try {
-                await marvelApi.fetchHeroSearch();
             } catch (e) {
                 expect(e.message).toEqual('Testing an error');
             }

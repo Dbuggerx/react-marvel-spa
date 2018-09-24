@@ -1,10 +1,13 @@
-import React from 'react';
-import './App.css';
-import HeroListContainer from '../../containers/HeroListContainer';
+// @flow
 
-const App = () => (
+import React from 'react';
+import type { StatelessFunctionalComponent } from 'react';
+import './App.css';
+import HeroesContainer from '../../containers/HeroesContainer';
+
+const App: StatelessFunctionalComponent<*> = () => (
     <div className="App">
-        <HeroListContainer />
+        <HeroesContainer pageSize={10} />
     </div>
 );
 

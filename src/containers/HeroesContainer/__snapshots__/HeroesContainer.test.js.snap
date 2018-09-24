@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HeroListContainer it renders a loading message 1`] = `<LoadingIndicator />`;
+exports[`HeroesContainer it renders a loading message 1`] = `<LoadingIndicator />`;
 
-exports[`HeroListContainer it renders an error message 1`] = `
+exports[`HeroesContainer it renders an error message 1`] = `
 <ErrorMessage
   message="Error loading heroes"
 />
 `;
 
-exports[`HeroListContainer it renders heroes 1`] = `
+exports[`HeroesContainer it renders heroes 1`] = `
 <div>
   <HeroesList
     getThumbnailUrl={[Function]}
@@ -40,3 +40,5 @@ exports[`HeroListContainer it renders heroes 1`] = `
   />
 </div>
 `;
+
+exports[`HeroesContainer it renders the modal 1`] = `<LoadingIndicator />`;
