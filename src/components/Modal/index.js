@@ -1,5 +1,4 @@
 // @flow
-
 import React, { Component } from 'react';
 import './Modal.scss';
 import './NoScroll.scss';
@@ -11,37 +10,76 @@ type Props = {
 };
 
 export default class Modal extends Component<Props> {
+    constructor(props: Props) {
+        super(props);
+        this.closeButton = React.createRef();
+        this.container = React.createRef();
+    }
+
     componentDidMount() {
-        window.addEventListener('keyup', this.handleKeyUp);
+        this.previouslyActiveElement = document.activeElement;
+        if (this.closeButton.current) this.closeButton.current.focus();
+        window.addEventListener('keyup', this.handleCloseKeyUp);
+        window.addEventListener('focus', this.handleFocus, true);
         if (document.body) document.body.classList.add('no-scroll');
     }
 
     componentWillUnmount() {
+        window.removeEventListener('keyup', this.handleCloseKeyUp);
+        window.removeEventListener('focus', this.handleFocus, true);
         if (document.body) document.body.classList.remove('no-scroll');
-        window.removeEventListener('keyup', this.handleKeyUp);
+        if (this.previouslyActiveElement) this.previouslyActiveElement.focus();
     }
 
-    handleKeyUp = (event: SyntheticKeyboardEvent<*>) => {
+    closeButton: *;
+    container: *;
+    previouslyActiveElement: ?HTMLElement;
+
+    handleCloseKeyUp = (event: SyntheticKeyboardEvent<*>) => {
         const escapeKey = 'key' in event ? event.key === 'Escape' || event.key === 'Esc' : event.keyCode === 27;
         if (escapeKey) this.props.close();
+    };
+
+    handleFocus = (event: SyntheticEvent<*>) => {
+        if (
+            event.target !== event.currentTarget &&
+            this.container.current &&
+            this.closeButton.current &&
+            !this.container.current.contains(event.target)
+        ) {
+            this.closeButton.current.focus();
+        }
     };
 
     render() {
         return (
             <div className="modal modal--opened">
-                <div className="modal__container">
+                <dialog
+                    open
+                    className="modal__container"
+                    aria-modal="true"
+                    aria-labelledby="modal-title"
+                    aria-describedby="modal-content"
+                    ref={this.container}
+                >
                     <button
                         type="button"
                         className="modal__close"
                         aria-label="Close"
-                        onKeyUp={this.handleKeyUp}
+                        onKeyUp={this.handleCloseKeyUp}
                         onClick={this.props.close}
+                        tabIndex="0"
+                        ref={this.closeButton}
                     >
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <div className="modal__title">{this.props.title}</div>
-                    <div className="modal__content">{this.props.children}</div>
-                </div>
+                    <div className="modal__title" id="modal-title">
+                        {this.props.title}
+                    </div>
+                    <div className="modal__content" id="modal-content">
+                        {this.props.children}
+                    </div>
+                </dialog>
             </div>
         );
     }

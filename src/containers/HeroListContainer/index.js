@@ -4,6 +4,7 @@ import { fetchHeros, getImageUrl } from '../../services/marvelApi';
 import ErrorMessage from '../../components/ErrorMessage';
 import LoadingIndicator from '../../components/LoadingIndicator';
 import HeroList from '../../components/HeroList';
+import HeroDetails from '../../components/HeroDetails';
 import Modal from '../../components/Modal';
 import CancelablePromise from '../../services/CancelablePromise';
 import type { Hero } from '../../services/types';
@@ -12,11 +13,8 @@ type State = {
     isLoading: boolean,
     heroes: Hero[],
     error?: string,
-    modalOpened: boolean,
-    selectedHero?: {
-        id: string,
-        name: string,
-    },
+    selectedHero: ?Hero,
+    selectedHeroImageUrl: ?string,
 };
 
 export default class HeroListContainer extends Component<void, State> {
@@ -24,8 +22,9 @@ export default class HeroListContainer extends Component<void, State> {
         super(props);
         this.state = {
             heroes: [],
+            selectedHero: null,
+            selectedHeroImageUrl: null,
             isLoading: true,
-            modalOpened: false,
         };
     }
 
@@ -43,24 +42,23 @@ export default class HeroListContainer extends Component<void, State> {
 
     cancelableFetch: *;
 
-    handleCardClick = (event: SyntheticEvent<HTMLDivElement>) => {
-        console.log('EVENT', event.currentTarget.dataset.heroName);
+    handleHeroClick = (hero: Hero) => {
         this.setState({
-            modalOpened: true,
-            selectedHero: {
-                id: event.currentTarget.id,
-                name: event.currentTarget.dataset.heroName,
-            },
+            selectedHero: hero,
+            selectedHeroImageUrl: getImageUrl(hero, 'big'),
         });
     };
 
-    handleToggleModal = () => {
-        this.setState({ modalOpened: !this.state.modalOpened });
+    handleCloseModal = () => {
+        this.setState({
+            selectedHero: null,
+            selectedHeroImageUrl: null,
+        });
     };
 
     async fetchMarvelHeroes() {
         try {
-            this.cancelableFetch = new CancelablePromise(fetchHeros());
+            this.cancelableFetch = new CancelablePromise(fetchHeros(10));
             const heroesResult = await this.cancelableFetch.promise;
             this.setState({
                 heroes: heroesResult.data.results,
@@ -84,14 +82,13 @@ export default class HeroListContainer extends Component<void, State> {
         }
         return (
             <div>
-                {this.state.modalOpened &&
-                    this.state.selectedHero && (
-                        <Modal title={this.state.selectedHero.name} close={this.handleToggleModal}>
-                            Hero details for id : {this.state.selectedHero.id}
-                        </Modal>
-                    )}
+                {this.state.selectedHero && (
+                    <Modal title={this.state.selectedHero.name} close={this.handleCloseModal}>
+                        <HeroDetails hero={this.state.selectedHero} imageUrl={this.state.selectedHeroImageUrl || ''} />
+                    </Modal>
+                )}
                 <HeroList
-                    onHeroClick={this.handleCardClick}
+                    onHeroClick={this.handleHeroClick}
                     heroes={this.state.heroes}
                     getThumbnailUrl={this.getThumbnailUrl}
                 />

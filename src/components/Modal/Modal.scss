@@ -20,6 +20,11 @@
     display: flex;
     flex-flow: column nowrap;
     position: relative;
+    overflow: auto;
+    border: 0;
+    padding: 0;
+    width: unset;
+    height: unset;
   }
 
   &__close {
