@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PaginationContainer render renders Pagination 1`] = `
+<Pagination
+  currentPage={1}
+  goToNextPage={[Function]}
+  goToPreviousPage={[Function]}
+  pageCount={10}
+/>
+`;
