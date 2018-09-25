@@ -90,7 +90,7 @@ export default class HeroListContainer extends Component<Props, State> {
                     offset: heroesResult.data.offset,
                     limit: heroesResult.data.limit,
                     total: heroesResult.data.total,
-                    count: heroesResult.data.total,
+                    count: heroesResult.data.count,
                 },
             });
         } catch (error) {
@@ -113,7 +113,7 @@ export default class HeroListContainer extends Component<Props, State> {
             <div>
                 {this.state.selection && (
                     <Modal title={this.state.selection.hero.name} close={this.handleCloseModal}>
-                        <HeroDetails hero={this.state.selection.hero} imageUrl={this.state.selection.imageUrl || ''} />
+                        <HeroDetails hero={this.state.selection.hero} imageUrl={this.state.selection.imageUrl} />
                     </Modal>
                 )}
                 <HeroList
