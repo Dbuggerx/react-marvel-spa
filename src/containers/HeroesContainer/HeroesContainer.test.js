@@ -85,7 +85,7 @@ describe('HeroesContainer', () => {
         test('calls "cancel" on CancelablePromise object', () => {
             const wrapper = shallow(<HeroesContainer />);
             const spy = jest.spyOn(wrapper.instance().cancelableFetch, 'cancel');
-            wrapper.instance().componentWillUnmount();
+            wrapper.unmount();
             expect(spy).toHaveBeenCalled();
         });
     });
@@ -139,16 +139,38 @@ describe('HeroesContainer', () => {
     });
 
     describe('fetchHeroesPage', () => {
-        test('calls "fetchMarvelHeroes"', () => {
-            const wrapper = shallow(<HeroesContainer />);
-            const fetchMarvelHeroesSpy = jest.spyOn(HeroesContainer.prototype, 'fetchMarvelHeroes');
-            wrapper.setProps({
-                pageSize: 10,
-            });
+        let fetchMarvelHeroesSpy;
+        let wrapper;
+        beforeEach(() => {
+            wrapper = shallow(<HeroesContainer pageSize="10" />);
+            fetchMarvelHeroesSpy = jest.spyOn(wrapper.instance(), 'fetchMarvelHeroes');
+        });
+
+        test('calls "fetchMarvelHeroes" passing "offset"', () => {
             wrapper.instance().fetchHeroesPage(3);
+            expect(fetchMarvelHeroesSpy.mock.calls.length).toBe(1);
             expect(fetchMarvelHeroesSpy).toHaveBeenCalledWith({
                 offset: 20,
             });
+        });
+
+        test('calls "fetchMarvelHeroes" passing "nameStartsWith"', () => {
+            wrapper.instance().fetchHeroesPage(4, 'Test');
+            expect(fetchMarvelHeroesSpy.mock.calls.length).toBe(1);
+            expect(fetchMarvelHeroesSpy).toHaveBeenCalledWith({
+                offset: 30,
+                nameStartsWith: 'Test',
+            });
+        });
+    });
+
+    describe('handleSearchChanged', () => {
+        test('changes "fetchHeroesPage"', () => {
+            const wrapper = shallow(<HeroesContainer />);
+            const fetchHeroesPageSpy = jest.spyOn(wrapper.instance(), 'fetchHeroesPage');
+            wrapper.instance().handleSearchChanged('Testing');
+            expect(fetchHeroesPageSpy.mock.calls.length).toBe(1);
+            expect(fetchHeroesPageSpy).toHaveBeenCalledWith(1, 'Testing');
         });
     });
 });

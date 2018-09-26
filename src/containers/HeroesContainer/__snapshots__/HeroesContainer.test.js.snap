@@ -22,6 +22,9 @@ exports[`HeroesContainer handleHeroClick renders the Modal with HeroDetails 1`] 
       imageUrl="getImageUrl result"
     />
   </Modal>
+  <SearchContainer
+    onSearchChanged={[Function]}
+  />
   <HeroList
     getThumbnailUrl={[Function]}
     heroes={
@@ -70,6 +73,9 @@ exports[`HeroesContainer render renders an error message 1`] = `
 
 exports[`HeroesContainer render renders heroes 1`] = `
 <div>
+  <SearchContainer
+    onSearchChanged={[Function]}
+  />
   <HeroList
     getThumbnailUrl={[Function]}
     heroes={

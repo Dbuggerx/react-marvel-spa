@@ -7,6 +7,7 @@ import HeroList from '../../components/HeroList';
 import HeroDetails from '../../components/HeroDetails';
 import Modal from '../../components/Modal';
 import PaginationContainer from '../PaginationContainer';
+import SearchContainer from '../SearchContainer';
 import CancelablePromise from '../../services/CancelablePromise';
 import type { Hero } from '../../services/types';
 
@@ -70,9 +71,14 @@ export default class HeroListContainer extends Component<Props, State> {
         });
     };
 
-    fetchHeroesPage = (page: number) => {
+    handleSearchChanged = (param: string) => {
+        this.fetchHeroesPage(1, param);
+    };
+
+    fetchHeroesPage = (page: number, searchParam?: string) => {
         this.fetchMarvelHeroes({
             offset: this.props.pageSize * (page - 1),
+            ...(searchParam && searchParam.length > 0 ? { nameStartsWith: searchParam } : {}),
         });
     };
 
@@ -116,6 +122,7 @@ export default class HeroListContainer extends Component<Props, State> {
                         <HeroDetails hero={this.state.selection.hero} imageUrl={this.state.selection.imageUrl} />
                     </Modal>
                 )}
+                <SearchContainer onSearchChanged={this.handleSearchChanged} />
                 <HeroList
                     onHeroClick={this.handleHeroClick}
                     heroes={this.state.heroes}
