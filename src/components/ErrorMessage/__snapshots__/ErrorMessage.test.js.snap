@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`it renders properly 1`] = `
+exports[`ErrorMessage renders properly 1`] = `
 <h1>
   This is a test
 </h1>

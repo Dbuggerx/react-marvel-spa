@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NameList renders properly 1`] = `
+<div>
+  Filter:
+  <input
+    onChange={[Function]}
+    placeholder="Filter"
+    type="text"
+    value=""
+  />
+  <div
+    key="aaa"
+  >
+    aaa
+  </div>
+  <div
+    key="bbb"
+  >
+    bbb
+  </div>
+  <div
+    key="ccc"
+  >
+    ccc
+  </div>
+</div>
+`;

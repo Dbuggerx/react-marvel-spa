@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeroList render renders properly 1`] = `
+<Fragment>
+  <ForwardRef
+    hero={
+      Object {
+        "id": 1,
+        "name": "hero1",
+      }
+    }
+    imageUrl="image URL for hero1"
+    key="1"
+    onClick={[Function]}
+  />
+  <ForwardRef
+    hero={
+      Object {
+        "id": 2,
+        "name": "hero2",
+      }
+    }
+    imageUrl="image URL for hero2"
+    key="2"
+    onClick={[Function]}
+  />
+</Fragment>
+`;

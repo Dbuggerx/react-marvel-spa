@@ -6,7 +6,7 @@ import './NoScroll.scss';
 type Props = {
     children: any,
     title: string,
-    close: () => void,
+    onClose: () => void,
 };
 
 export default class Modal extends Component<Props> {
@@ -37,7 +37,7 @@ export default class Modal extends Component<Props> {
 
     handleCloseKeyUp = (event: SyntheticKeyboardEvent<*>) => {
         const escapeKey = 'key' in event ? event.key === 'Escape' || event.key === 'Esc' : event.keyCode === 27;
-        if (escapeKey) this.props.close();
+        if (escapeKey) this.props.onClose();
     };
 
     handleFocus = (event: SyntheticEvent<*>) => {
@@ -67,7 +67,7 @@ export default class Modal extends Component<Props> {
                         className="modal__close"
                         aria-label="Close"
                         onKeyUp={this.handleCloseKeyUp}
-                        onClick={this.props.close}
+                        onClick={this.props.onClose}
                         tabIndex="0"
                         ref={this.closeButton}
                     >

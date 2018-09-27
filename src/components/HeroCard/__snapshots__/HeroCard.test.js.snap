@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeroCard renders properly 1`] = `
+<div
+  onClick={[Function]}
+  onKeyUp={[Function]}
+  role="button"
+  tabIndex="0"
+>
+  <img
+    alt="3-D Man"
+    src="the/img/url"
+  />
+  Name: 
+  3-D Man
+</div>
+`;

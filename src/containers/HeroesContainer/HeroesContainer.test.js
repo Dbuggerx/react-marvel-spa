@@ -148,7 +148,7 @@ describe('HeroesContainer', () => {
 
         test('calls "fetchMarvelHeroes" passing "offset"', () => {
             wrapper.instance().fetchHeroesPage(3);
-            expect(fetchMarvelHeroesSpy.mock.calls.length).toBe(1);
+            expect(fetchMarvelHeroesSpy).toHaveBeenCalledTimes(1);
             expect(fetchMarvelHeroesSpy).toHaveBeenCalledWith({
                 offset: 20,
             });
@@ -156,7 +156,7 @@ describe('HeroesContainer', () => {
 
         test('calls "fetchMarvelHeroes" passing "nameStartsWith"', () => {
             wrapper.instance().fetchHeroesPage(4, 'Test');
-            expect(fetchMarvelHeroesSpy.mock.calls.length).toBe(1);
+            expect(fetchMarvelHeroesSpy).toHaveBeenCalledTimes(1);
             expect(fetchMarvelHeroesSpy).toHaveBeenCalledWith({
                 offset: 30,
                 nameStartsWith: 'Test',
@@ -169,7 +169,7 @@ describe('HeroesContainer', () => {
             const wrapper = shallow(<HeroesContainer />);
             const fetchHeroesPageSpy = jest.spyOn(wrapper.instance(), 'fetchHeroesPage');
             wrapper.instance().handleSearchChanged('Testing');
-            expect(fetchHeroesPageSpy.mock.calls.length).toBe(1);
+            expect(fetchHeroesPageSpy).toHaveBeenCalledTimes(1);
             expect(fetchHeroesPageSpy).toHaveBeenCalledWith(1, 'Testing');
         });
     });

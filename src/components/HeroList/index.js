@@ -28,14 +28,18 @@ export default class HeroList extends React.Component<Props> {
     firstCard: *;
 
     render() {
-        return this.props.heroes.map((hero, idx) => (
-            <HeroCardWithRef
-                ref={idx === 0 ? this.firstCard : null}
-                onClick={this.props.onHeroClick}
-                hero={hero}
-                key={hero.id}
-                imageUrl={this.props.getThumbnailUrl(hero)}
-            />
-        ));
+        return (
+            <React.Fragment>
+                {this.props.heroes.map((hero, idx) => (
+                    <HeroCardWithRef
+                        ref={idx === 0 ? this.firstCard : null}
+                        onClick={this.props.onHeroClick}
+                        hero={hero}
+                        key={hero.id}
+                        imageUrl={this.props.getThumbnailUrl(hero)}
+                    />
+                ))}
+            </React.Fragment>
+        );
     }
 }

@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeroDetails renders basic data 1`] = `
+<div>
+  <div>
+    <img
+      alt="Loading..."
+      src="the/img/url"
+    />
+  </div>
+  <div>
+    Description: 
+    This is a test!
+  </div>
+</div>
+`;
+
+exports[`HeroDetails renders collections data 1`] = `
+<div>
+  <div>
+    <img
+      alt="Loading..."
+      src="the/img/url"
+    />
+  </div>
+  <div>
+    Description: 
+    This is a test!
+  </div>
+  <div>
+    <h2>
+      Comics
+    </h2>
+    <NameList
+      names={
+        Array [
+          "comicA",
+          "comicB",
+        ]
+      }
+    />
+  </div>
+  <div>
+    <h2>
+      Series
+    </h2>
+    <NameList
+      names={
+        Array [
+          "serieA",
+          "serieB",
+        ]
+      }
+    />
+  </div>
+</div>
+`;

@@ -20,7 +20,7 @@ const renderLinksFor = (
         }>[],
     },
 ) =>
-    (collection.items.length > 0 ? (
+    (collection && collection.items.length > 0 ? (
         <div>
             <h2>{collectionName}</h2>
             <NameList names={collection.items.map(c => c.name)} />

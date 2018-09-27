@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination renders properly 1`] = `
+<nav
+  aria-label="Pagination Navigation"
+>
+  <button
+    aria-label="Go to previous page"
+    onClick={[Function]}
+  >
+    back
+  </button>
+  Showing page 
+  1
+   of 
+  10
+  <button
+    aria-label="Go to next page"
+    onClick={[Function]}
+  >
+    forward
+  </button>
+</nav>
+`;

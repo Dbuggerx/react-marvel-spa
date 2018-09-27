@@ -118,7 +118,7 @@ export default class HeroListContainer extends Component<Props, State> {
         return (
             <div>
                 {this.state.selection && (
-                    <Modal title={this.state.selection.hero.name} close={this.handleCloseModal}>
+                    <Modal title={this.state.selection.hero.name} onClose={this.handleCloseModal}>
                         <HeroDetails hero={this.state.selection.hero} imageUrl={this.state.selection.imageUrl} />
                     </Modal>
                 )}

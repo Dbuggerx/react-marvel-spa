@@ -3,7 +3,7 @@
 exports[`HeroesContainer handleHeroClick renders the Modal with HeroDetails 1`] = `
 <div>
   <Modal
-    close={[Function]}
+    onClose={[Function]}
     title="3-D Man"
   >
     <HeroDetails

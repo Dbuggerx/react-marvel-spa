@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal render renders properly 1`] = `
+<div
+  className="modal modal--opened"
+>
+  <dialog
+    aria-describedby="modal-content"
+    aria-labelledby="modal-title"
+    aria-modal="true"
+    className="modal__container"
+    open={true}
+  >
+    <button
+      aria-label="Close"
+      className="modal__close"
+      onKeyUp={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        aria-hidden="true"
+      >
+        ×
+      </span>
+    </button>
+    <div
+      className="modal__title"
+      id="modal-title"
+    >
+      Testing
+    </div>
+    <div
+      className="modal__content"
+      id="modal-content"
+    >
+      Test
+    </div>
+  </dialog>
+</div>
+`;
