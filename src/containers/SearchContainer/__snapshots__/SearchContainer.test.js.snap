@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchContainer render renders properly 1`] = `
+<SearchForm
+  onSearch={[Function]}
+/>
+`;
