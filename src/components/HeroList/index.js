@@ -1,8 +1,10 @@
 // @flow
 
-import * as React from 'react';
+import React from 'react';
+import type { StatelessFunctionalComponent } from 'react';
 import HeroCard from '../HeroCard';
 import type { Hero } from '../../services/types';
+import './HeroList.scss';
 
 type Props = {
     heroes: Hero[],
@@ -10,36 +12,18 @@ type Props = {
     onHeroClick: (hero: Hero) => void,
 };
 
-// $FlowFixMe
-const HeroCardWithRef = React.forwardRef((props, ref) => <HeroCard {...props} cardRef={ref} />);
+const HeroList: StatelessFunctionalComponent<Props> = (props: Props) => (
+    <div className="hero-list" tabIndex="-1">
+        {props.heroes.length === 0 && <h2>No results found!</h2>}
+        {props.heroes.length > 0 &&
+            props.heroes.map(hero => (
+                <div className="hero-list__card" key={hero.id}>
+                    <HeroCard onClick={props.onHeroClick} hero={hero} imageUrl={props.getThumbnailUrl(hero)} />
+                </div>
+            ))}
+    </div>
+);
 
-export default class HeroList extends React.Component<Props> {
-    constructor(props: Props) {
-        super(props);
-        this.firstCard = React.createRef();
-    }
+HeroList.displayName = 'HeroList';
 
-    componentDidUpdate(prevProps: Props) {
-        if (prevProps.heroes[0].id !== this.props.heroes[0].id && this.firstCard && this.firstCard.current) {
-            this.firstCard.current.focus();
-        }
-    }
-
-    firstCard: *;
-
-    render() {
-        return (
-            <React.Fragment>
-                {this.props.heroes.map((hero, idx) => (
-                    <HeroCardWithRef
-                        ref={idx === 0 ? this.firstCard : null}
-                        onClick={this.props.onHeroClick}
-                        hero={hero}
-                        key={hero.id}
-                        imageUrl={this.props.getThumbnailUrl(hero)}
-                    />
-                ))}
-            </React.Fragment>
-        );
-    }
-}
+export default HeroList;

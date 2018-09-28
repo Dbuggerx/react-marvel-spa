@@ -2,6 +2,7 @@
 
 exports[`HeroCard renders properly 1`] = `
 <div
+  className="hero-card"
   onClick={[Function]}
   onKeyUp={[Function]}
   role="button"
@@ -11,7 +12,6 @@ exports[`HeroCard renders properly 1`] = `
     alt="3-D Man"
     src="the/img/url"
   />
-  Name: 
   3-D Man
 </div>
 `;

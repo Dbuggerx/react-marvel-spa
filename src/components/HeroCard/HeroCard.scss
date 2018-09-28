@@ -1,0 +1,29 @@
+@import '../variables';
+
+.hero-card {
+  background: map-get($colors, highlight-bg);
+  color: map-get($colors, highlight-fg);
+  text-align: center;
+  padding: 5px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  transition: transform 0.3s ease-out;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-font-smoothing: subpixel-antialiased;
+
+  &:focus {
+    outline-color: map-get($colors, highlight-bg);
+  }
+
+  &:hover, &:focus {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 12px 3px rgba(0,0,0,0.75);
+    z-index: 2;
+  }
+}

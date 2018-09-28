@@ -1,28 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HeroList render renders properly 1`] = `
-<Fragment>
-  <ForwardRef
-    hero={
-      Object {
-        "id": 1,
-        "name": "hero1",
-      }
-    }
-    imageUrl="image URL for hero1"
+exports[`HeroList render renders properly with no results 1`] = `
+<div
+  className="hero-list"
+  tabIndex="-1"
+>
+  <h2>
+    No results found!
+  </h2>
+</div>
+`;
+
+exports[`HeroList render renders properly with results 1`] = `
+<div
+  className="hero-list"
+  tabIndex="-1"
+>
+  <div
+    className="hero-list__card"
     key="1"
-    onClick={[Function]}
-  />
-  <ForwardRef
-    hero={
-      Object {
-        "id": 2,
-        "name": "hero2",
+  >
+    <HeroCard
+      hero={
+        Object {
+          "id": 1,
+          "name": "hero1",
+        }
       }
-    }
-    imageUrl="image URL for hero2"
+      imageUrl="image URL for hero1"
+      onClick={[Function]}
+    />
+  </div>
+  <div
+    className="hero-list__card"
     key="2"
-    onClick={[Function]}
-  />
-</Fragment>
+  >
+    <HeroCard
+      hero={
+        Object {
+          "id": 2,
+          "name": "hero2",
+        }
+      }
+      imageUrl="image URL for hero2"
+      onClick={[Function]}
+    />
+  </div>
+</div>
 `;

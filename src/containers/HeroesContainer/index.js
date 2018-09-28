@@ -1,10 +1,12 @@
 // @flow
 import React, { Component } from 'react';
 import { fetchHeros, getImageUrl } from '../../services/marvelApi';
+import MainLayout from '../../components/MainLayout';
 import ErrorMessage from '../../components/ErrorMessage';
 import LoadingIndicator from '../../components/LoadingIndicator';
 import HeroList from '../../components/HeroList';
 import HeroDetails from '../../components/HeroDetails';
+import Information from '../../components/Information';
 import Modal from '../../components/Modal';
 import PaginationContainer from '../PaginationContainer';
 import SearchContainer from '../SearchContainer';
@@ -29,6 +31,7 @@ type State = {
         total: number,
         count: number,
     },
+    attribution: string,
 };
 
 export default class HeroListContainer extends Component<Props, State> {
@@ -39,6 +42,7 @@ export default class HeroListContainer extends Component<Props, State> {
             isLoading: true,
             selection: null,
             pagination: null,
+            attribution: 'Data provided by Marvel. © 2014 Marvel',
         };
     }
 
@@ -83,6 +87,10 @@ export default class HeroListContainer extends Component<Props, State> {
     };
 
     async fetchMarvelHeroes(params?: { offset: number, nameStartsWith?: string }) {
+        this.setState({
+            isLoading: true,
+        });
+
         try {
             this.cancelableFetch = new CancelablePromise(fetchHeros({
                 limit: this.props.pageSize,
@@ -98,6 +106,7 @@ export default class HeroListContainer extends Component<Props, State> {
                     total: heroesResult.data.total,
                     count: heroesResult.data.count,
                 },
+                attribution: heroesResult.attributionText,
             });
         } catch (error) {
             if (error.message !== CancelablePromise.errorMessage) {
@@ -116,22 +125,30 @@ export default class HeroListContainer extends Component<Props, State> {
             return <LoadingIndicator />;
         }
         return (
-            <div>
+            <React.Fragment>
                 {this.state.selection && (
                     <Modal title={this.state.selection.hero.name} onClose={this.handleCloseModal}>
                         <HeroDetails hero={this.state.selection.hero} imageUrl={this.state.selection.imageUrl} />
                     </Modal>
                 )}
-                <SearchContainer onSearchChanged={this.handleSearchChanged} />
-                <HeroList
-                    onHeroClick={this.handleHeroClick}
-                    heroes={this.state.heroes}
-                    getThumbnailUrl={this.getThumbnailUrl}
+                <MainLayout
+                    search={<SearchContainer onSearchChanged={this.handleSearchChanged} />}
+                    list={
+                        <HeroList
+                            onHeroClick={this.handleHeroClick}
+                            heroes={this.state.heroes}
+                            getThumbnailUrl={this.getThumbnailUrl}
+                        />
+                    }
+                    pagination={
+                        this.state.heroes.length > 0 &&
+                        this.state.pagination && (
+                            <PaginationContainer {...this.state.pagination} goToPage={this.fetchHeroesPage} />
+                        )
+                    }
+                    info={<Information attribution={this.state.attribution} />}
                 />
-                {this.state.pagination && (
-                    <PaginationContainer {...this.state.pagination} goToPage={this.fetchHeroesPage} />
-                )}
-            </div>
+            </React.Fragment>
         );
     }
 }

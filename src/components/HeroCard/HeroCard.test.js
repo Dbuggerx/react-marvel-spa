@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import HeroCard from './index';
 
 const basicHeroMock = {
@@ -19,13 +19,6 @@ describe('HeroCard', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
-    test('it sets ref', () => {
-        const handleClickMock = jest.fn();
-        const refMock = React.createRef();
-        expect(refMock.current).toBeNull();
-        mount(<HeroCard hero={basicHeroMock} imageUrl="the/img/url" onClick={handleClickMock} cardRef={refMock} />);
-        expect(refMock.current).not.toBeNull();
-    });
 
     test('it calls props.onClick upon click', () => {
         const handleClickMock = jest.fn();
