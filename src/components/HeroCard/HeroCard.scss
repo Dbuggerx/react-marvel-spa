@@ -26,4 +26,8 @@
     box-shadow: 0px 0px 12px 3px rgba(0,0,0,0.75);
     z-index: 2;
   }
+
+  &__label {
+    max-width: 100%
+  }
 }

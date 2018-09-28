@@ -13,9 +13,7 @@ type Props = {
  */
 const ErrorMessage: StatelessFunctionalComponent<Props> = (props: Props) => (
     <div className="error-message">
-        <div className="error-message__description">
-            <h1>{props.message}</h1>
-        </div>
+        <h1>{props.message}</h1>
     </div>
 );
 

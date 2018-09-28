@@ -1,10 +1,13 @@
+@import '../scss/variables';
+
 .hero-details {
-  $list-margin: 10px;
+  $list-margin: 15px;
   font-size: 1.5em;
 
   &__image {
-    margin: 15px auto;
+    margin: $list-margin auto;
     display: block;
+    max-width: 100%;
   }
 
   &__lists {
@@ -15,8 +18,12 @@
   }
 
   &__list {
-    flex: 1 1 auto;
+    flex: 0 1 30%;
     margin-left: $list-margin;
     margin-top: $list-margin;
+
+    @media #{map-get($breakpoints, medium)} {
+      flex-basis: 100%;
+    }
   }
 }

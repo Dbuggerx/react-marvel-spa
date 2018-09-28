@@ -24,15 +24,9 @@ export default class HeroCard extends Component<Props> {
 
     render() {
         return (
-            <div
-                className="hero-card"
-                onClick={this.handleClick}
-                onKeyUp={this.handleKeyUp}
-                role="button"
-                tabIndex="0"
-            >
+            <div className="hero-card" onClick={this.handleClick} onKeyUp={this.handleKeyUp} role="button" tabIndex="0">
                 <img src={this.props.imageUrl} alt={this.props.hero.name} />
-                {this.props.hero.name}
+                <div className="hero-card__label">{this.props.hero.name}</div>
             </div>
         );
     }

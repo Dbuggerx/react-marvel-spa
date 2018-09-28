@@ -1,14 +1,16 @@
 @import '../scss/variables';
 
 .app {
+  font-family: 'Bangers', cursive;
   background: url('https://i.annihil.us/u/prod/marvel/choosemarvelquiz/images/comicpanelsdark.png')
     map-get($colors, secondary-bg);
   min-height: 100vh;
   max-width: 100vw;
   padding: 15px 55px;
-  position: relative;
   box-sizing: border-box;
-  font-family: 'Bangers', cursive;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
 
   @media #{map-get($breakpoints, small)} {
     padding: 15px;

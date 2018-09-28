@@ -12,6 +12,10 @@ exports[`HeroCard renders properly 1`] = `
     alt="3-D Man"
     src="the/img/url"
   />
-  3-D Man
+  <div
+    className="hero-card__label"
+  >
+    3-D Man
+  </div>
 </div>
 `;

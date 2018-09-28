@@ -9,9 +9,7 @@ import './LoadingIndicator.scss';
  */
 const LoadingIndicator: StatelessFunctionalComponent<*> = () => (
     <div className="loading-indicator">
-        <div className="loading-indicator__message">
-            <h1>Loading...</h1>
-        </div>
+        <h1>Loading...</h1>
     </div>
 );
 

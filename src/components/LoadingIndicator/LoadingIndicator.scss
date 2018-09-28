@@ -1,16 +1,10 @@
 @import '../scss/variables';
 
 .loading-indicator {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  height: 100vh;
-
-  &__message {
-    background: map-get($colors, primary-bg);
-    color: map-get($colors, primary-fg);
-    padding: 15px;
-    box-sizing: border-box;
-    text-align: center;
-  }
+  flex: 0 0 auto;
+  background: map-get($colors, primary-bg);
+  color: map-get($colors, primary-fg);
+  padding: 15px;
+  box-sizing: border-box;
+  text-align: center;
 }

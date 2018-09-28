@@ -8,13 +8,13 @@
     'main-layout-search main-layout-info'
     'main-layout-list main-layout-info'
     'main-layout-pagination main-layout-info';
-  gap: 15px;
   height: 100%;
   width: 100%;
   background: map-get($colors, primary-bg);
   color: map-get($colors, primary-fg);
   max-height: inherit;
   padding: 15px;
+
   box-sizing: border-box;
 
   &__search {
@@ -40,6 +40,8 @@
   }
 
   @supports (display: grid) {
+    gap: 15px;
+
     &__info {
       margin-left: 0;
     }

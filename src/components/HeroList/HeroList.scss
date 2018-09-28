@@ -7,17 +7,17 @@
   outline: none;
 
   &__card {
-    width: 21%;
+    flex-basis: 21%;
     margin: 2%;
     height: 11em;
 
     @media #{map-get($breakpoints, medium)} {
-      width: 45%;
+      flex-basis: 45%;
       margin: 2% 2.5%;
     }
 
     @media #{map-get($breakpoints, small)} {
-      width: 100%;
+      flex-basis: 100%;
       margin: 2% 0;
     }
   }

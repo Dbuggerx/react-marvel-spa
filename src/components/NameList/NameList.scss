@@ -24,10 +24,12 @@
     border: solid 1px map-get($colors, highlight-fg);
     margin-left: 5px;
     color: map-get($colors, marvel-red);
+    flex-basis: 100%;
   }
 
   &__filter {
     display: flex;
+    flex-basis: 100%;
     flex-flow: row nowrap;
     align-items: center;
     color: map-get($colors, marvel-red);
