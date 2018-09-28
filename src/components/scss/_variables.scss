@@ -5,10 +5,12 @@ $colors: (
   highlight-bg: #e4e4e4,
   highlight-fg: black,
   primary-bg: black,
-  text-color: white
+  primary-fg: white,
+  marvel-red: #ec1d24 
 );
 
 $breakpoints: (
   medium: only screen and (max-width: 768px),
-  small: only screen and (max-width: 500px)
+  small: only screen and (max-width: 500px),
+  small-not-ie: all and (-ms-high-contrast: none)
 );

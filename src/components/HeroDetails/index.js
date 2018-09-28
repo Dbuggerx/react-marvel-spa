@@ -4,13 +4,17 @@ import React from 'react';
 import type { StatelessFunctionalComponent } from 'react';
 import NameList from '../NameList';
 import type { Hero } from '../../services/types';
+import './HeroDetails.scss';
 
 type Props = {
     hero: Hero,
     imageUrl: string,
 };
 
-const renderLinksFor = (
+/**
+ * Renders a collection of string
+ */
+const renderListFor = (
     collectionName: string,
     collection: {
         items: $Shape<{
@@ -21,22 +25,24 @@ const renderLinksFor = (
     },
 ) =>
     (collection && collection.items.length > 0 ? (
-        <div>
-            <h2>{collectionName}</h2>
-            <NameList names={collection.items.map(c => c.name)} />
+        <div className="hero-details__list">
+            <NameList collectionName={collectionName} names={collection.items.map(c => c.name)} />
         </div>
     ) : null);
 
+/**
+ * Renders the image and detailed information for the Hero
+ */
 const HeroDetails: StatelessFunctionalComponent<Props> = (props: Props) => (
-    <div>
-        <div>
-            <img src={props.imageUrl} alt="Loading..." />
+    <div className="hero-details">
+        <img className="hero-details__image" src={props.imageUrl} alt={props.hero.name} />
+        {props.hero.description.length > 0 && props.hero.description}
+        <div className="hero-details__lists">
+            {renderListFor('Comics', props.hero.comics)}
+            {renderListFor('Series', props.hero.series)}
+            {renderListFor('Stories', props.hero.stories)}
+            {renderListFor('Events', props.hero.events)}
         </div>
-        {props.hero.description.length > 0 && <div>Description: {props.hero.description}</div>}
-        {renderLinksFor('Comics', props.hero.comics)}
-        {renderLinksFor('Series', props.hero.series)}
-        {renderLinksFor('Stories', props.hero.stories)}
-        {renderLinksFor('Events', props.hero.events)}
     </div>
 );
 

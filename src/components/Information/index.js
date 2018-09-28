@@ -7,8 +7,11 @@ type Props = {
     attribution: string,
 };
 
+/**
+ * Renders general information data, like Marvel's logo, attribution text, etc
+ */
 const Information: StatelessFunctionalComponent<Props> = (props: Props) => (
-    <div>
+    <aside>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 214 86">
             <g fill="none" fillRule="evenodd">
                 <path fill="#EC1D24" d="M0 86h214V0H0z" />
@@ -18,8 +21,8 @@ const Information: StatelessFunctionalComponent<Props> = (props: Props) => (
                 />
             </g>
         </svg>
-        {props.attribution}
-    </div>
+        <p>{props.attribution}</p>
+    </aside>
 );
 
 Information.displayName = 'Information';

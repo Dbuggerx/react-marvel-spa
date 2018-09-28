@@ -10,6 +10,9 @@ type Props = {
     goToPage: (page: number) => void,
 };
 
+/**
+ * Handles pagination data
+ */
 export default class PaginationContainer extends Component<Props> {
     get pageCount() {
         return Math.ceil(this.props.total / this.props.limit);

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainLayout renders properly 1`] = `
+<div
+  className="main-layout"
+>
+  <div
+    className="main-layout__search"
+  >
+    Search
+  </div>
+  <div
+    className="main-layout__list"
+    tabIndex="-1"
+  >
+    List
+  </div>
+  <div
+    className="main-layout__pagination"
+  >
+    Pagination
+  </div>
+  <div
+    className="main-layout__info"
+  >
+    Information
+  </div>
+</div>
+`;

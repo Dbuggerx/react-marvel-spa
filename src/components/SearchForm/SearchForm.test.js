@@ -17,13 +17,27 @@ describe('SearchForm', () => {
         expect(wrapper.state('searchParam')).toBe('Test');
     });
 
-    test('submit calls "props.onSearch"', () => {
-        wrapper.setState({
-            searchParam: 'Testing',
+    describe('form submit', () => {
+        test('calls "props.onSearch" with search param', () => {
+            wrapper.setState({
+                searchParam: 'Testing',
+            });
+            wrapper.find('form').simulate('submit', {
+                preventDefault: jest.fn(),
+            });
+            expect(handleSearchMock).toHaveBeenCalledWith('Testing');
         });
-        wrapper.find('form').simulate('submit', {
-            preventDefault: jest.fn(),
+    });
+
+    describe('handleReset', () => {
+        test('calls "props.onSearch" without search param', () => {
+            wrapper.setState({
+                searchParam: 'Testing',
+            });
+            wrapper.find('[title="Reset search"]').simulate('click', {
+                preventDefault: jest.fn(),
+            });
+            expect(handleSearchMock).toHaveBeenCalledWith('Testing');
         });
-        expect(handleSearchMock).toHaveBeenCalledWith('Testing');
     });
 });

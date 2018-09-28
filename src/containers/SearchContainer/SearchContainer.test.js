@@ -22,7 +22,9 @@ describe('SearchContainer', () => {
         test('it does not call "onSearchChanged"', () => {
             const handleSearchChangedMock = jest.fn();
             const wrapper = shallow(<SearchContainer onSearchChanged={handleSearchChangedMock} />);
-            wrapper.instance().lastSearch = 'test';
+            wrapper.setProps({
+                lastSearch: 'test',
+            });
             wrapper.instance().handleSearch('test');
             expect(handleSearchChangedMock).not.toHaveBeenCalled();
         });

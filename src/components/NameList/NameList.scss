@@ -1,0 +1,42 @@
+@import '../scss/variables';
+
+.name-list {
+  border: solid 1px map-get($colors, highlight-fg);
+  margin: 5px 0;
+  padding: 15px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  background: map-get($colors, primary-bg);
+  color: map-get($colors, highlight-bg);
+
+  &__title, &__filter-input {
+    margin: 5px 0;
+  }
+
+  &__title {
+    color: map-get($colors, marvel-red);
+    text-align: center;
+  }
+
+  &__filter-input {
+    background: map-get($colors, highlight-bg);
+    border: solid 1px map-get($colors, highlight-fg);
+    margin-left: 5px;
+    color: map-get($colors, marvel-red);
+  }
+
+  &__filter {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    color: map-get($colors, marvel-red);
+    font-size: 0.7em;
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  &__item {
+    margin-top: 15px;
+  }
+}

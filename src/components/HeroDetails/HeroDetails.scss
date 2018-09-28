@@ -1,0 +1,22 @@
+.hero-details {
+  $list-margin: 10px;
+  font-size: 1.5em;
+
+  &__image {
+    margin: 15px auto;
+    display: block;
+  }
+
+  &__lists {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin-left: -$list-margin;
+  }
+
+  &__list {
+    flex: 1 1 auto;
+    margin-left: $list-margin;
+    margin-top: $list-margin;
+  }
+}

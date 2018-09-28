@@ -9,6 +9,10 @@ type Props = {
     onClose: () => void,
 };
 
+/**
+ * Renders a modal that traps the focus inside of it,
+ * and removes scrolling from the <body> when opened
+ */
 export default class Modal extends Component<Props> {
     constructor(props: Props) {
         super(props);
@@ -35,11 +39,17 @@ export default class Modal extends Component<Props> {
     container: *;
     previouslyActiveElement: ?HTMLElement;
 
+    /**
+     * Calls "this.props.onClose()" when the 'Esc' key is pressed
+     */
     handleCloseKeyUp = (event: SyntheticKeyboardEvent<*>) => {
         const escapeKey = 'key' in event ? event.key === 'Escape' || event.key === 'Esc' : event.keyCode === 27;
         if (escapeKey) this.props.onClose();
     };
 
+    /**
+     * Set focus on the "close button" if possible
+     */
     handleFocus = (event: SyntheticEvent<*>) => {
         if (
             event.target !== event.currentTarget &&
@@ -76,9 +86,7 @@ export default class Modal extends Component<Props> {
                     <div className="modal__title" id="modal-title">
                         {this.props.title}
                     </div>
-                    <div className="modal__content" id="modal-content">
-                        {this.props.children}
-                    </div>
+                    <div id="modal-content">{this.props.children}</div>
                 </dialog>
             </div>
         );

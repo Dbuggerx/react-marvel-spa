@@ -10,6 +10,9 @@ type Props = {
     onClick: (hero: Hero) => void,
 };
 
+/**
+ * Renders a card that displays the passed Hero data and its image
+ */
 export default class HeroCard extends Component<Props> {
     handleClick = () => {
         this.props.onClick(this.props.hero);

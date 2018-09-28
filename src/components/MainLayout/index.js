@@ -11,6 +11,9 @@ type Props = {
     pagination: ?*,
 };
 
+/**
+ * Wraps application sections with specific "slots"
+ */
 const MainLayout: StatelessFunctionalComponent<Props> = (props: Props) => (
     <div className="main-layout">
         <div className="main-layout__search">{props.search}</div>

@@ -1,0 +1,33 @@
+@import '../scss/variables';
+@import '../scss/placeholders';
+
+.search-form {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  height: 40px;
+
+  @media #{map-get($breakpoints, medium)} {
+    width: 100%;
+  }
+
+  &__label {
+    color: map-get($colors, primary-fg);
+    margin-right: 15px;
+  }
+
+  &__input {
+    flex: 2 1;
+    background: lighten(map-get($colors, primary-bg), 25%);
+    color: map-get($colors, primary-fg);
+    border: solid 1px map-get($colors, primary-bg);
+    padding: 3px;
+  }
+
+  &__button {
+    @extend %unstyled-button;
+    margin-left: 15px;
+  }
+}

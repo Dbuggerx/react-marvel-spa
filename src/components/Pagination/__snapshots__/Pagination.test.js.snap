@@ -1,24 +1,53 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Pagination renders properly 1`] = `
-<nav
-  aria-label="Pagination Navigation"
->
-  <button
-    aria-label="Go to previous page"
-    onClick={[Function]}
+<Fragment>
+  <svg
+    height="0"
+    viewBox="0 0 8 12"
+    width="0"
   >
-    back
-  </button>
-  Showing page 
-  1
-   of 
-  10
-  <button
-    aria-label="Go to next page"
-    onClick={[Function]}
+    <defs>
+      <path
+        d="M 7.41,10.58 2.83,6 7.41,1.41 6,0 0,6 6,12 Z"
+        id="chevron-left"
+      />
+    </defs>
+  </svg>
+  <nav
+    aria-label="Pagination Navigation"
+    className="pagination"
   >
-    forward
-  </button>
-</nav>
+    <button
+      aria-label="Go to previous page"
+      className="pagination__prev-button"
+      onClick={[Function]}
+    >
+      <svg
+        viewBox="0 0 8 12"
+      >
+        <use
+          xlinkHref="#chevron-left"
+        />
+      </svg>
+    </button>
+    Showing page 
+    1
+     of 
+    10
+    <button
+      aria-label="Go to next page"
+      className="pagination__next-button"
+      onClick={[Function]}
+    >
+      <svg
+        viewBox="0 0 8 12"
+      >
+        <use
+          xlinkHref="#chevron-left"
+        />
+      </svg>
+    </button>
+  </nav>
+</Fragment>
 `;

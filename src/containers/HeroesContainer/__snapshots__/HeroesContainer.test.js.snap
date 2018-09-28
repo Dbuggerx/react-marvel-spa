@@ -69,6 +69,7 @@ exports[`HeroesContainer handleHeroClick renders the Modal with HeroDetails 1`] 
     }
     search={
       <SearchContainer
+        lastSearch=""
         onSearchChanged={[Function]}
       />
     }
@@ -133,6 +134,7 @@ exports[`HeroesContainer render renders heroes 1`] = `
     }
     search={
       <SearchContainer
+        lastSearch=""
         onSearchChanged={[Function]}
       />
     }

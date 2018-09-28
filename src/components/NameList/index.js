@@ -1,15 +1,20 @@
 // @flow
 
 import React, { Component } from 'react';
+import './NameList.scss';
 
 type Props = {
     names: string[],
+    collectionName: string,
 };
 
 type State = {
     filterParam: string,
 };
 
+/**
+ * Renders a filterable collection of strings
+ */
 export default class NameList extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
@@ -29,22 +34,25 @@ export default class NameList extends Component<Props, State> {
         }, []);
 
         return (
-            <div>
-                Filter:
-                <input
-                    type="text"
-                    placeholder="Filter"
-                    value={this.state.filterParam}
-                    onChange={this.handleFilterChange}
-                />
+            <section className="name-list">
+                <h2 className="name-list__title">{this.props.collectionName}</h2>
+                <aside className="name-list__filter">
+                    Filter:
+                    <input
+                        type="text"
+                        value={this.state.filterParam}
+                        onChange={this.handleFilterChange}
+                        className="name-list__filter-input"
+                    />
+                </aside>
                 {(this.state.filterParam.length > 0
                     ? uniqueItems.filter(name => name.toLowerCase()
                         .indexOf(this.state.filterParam.toLowerCase()) !== -1)
                     : uniqueItems
                 ).map(name => (
-                    <div key={name}>{name}</div>
+                    <div key={name} className="name-list__item">{name}</div>
                 ))}
-            </div>
+            </section>
         );
     }
 }

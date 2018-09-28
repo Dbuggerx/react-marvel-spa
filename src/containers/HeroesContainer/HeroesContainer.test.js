@@ -81,6 +81,21 @@ describe('HeroesContainer', () => {
         });
     });
 
+    describe('componentDidUpdate', () => {
+        test('calls "fetchMarvelHeroes"', () => {
+            const wrapper = shallow(<HeroesContainer />);
+            const fetchMarvelHeroesSpy = jest.spyOn(wrapper.instance(), 'fetchMarvelHeroes');
+            wrapper.setState({
+                query: {
+                    search: 'Test',
+                    offset: 10,
+                },
+            });
+            expect(fetchMarvelHeroesSpy).toHaveBeenCalledTimes(1);
+            expect(fetchMarvelHeroesSpy).toHaveBeenCalledWith(10, 'Test');
+        });
+    });
+
     describe('componentWillUnmount', () => {
         test('calls "cancel" on CancelablePromise object', () => {
             const wrapper = shallow(<HeroesContainer />);
@@ -139,38 +154,40 @@ describe('HeroesContainer', () => {
     });
 
     describe('fetchHeroesPage', () => {
-        let fetchMarvelHeroesSpy;
         let wrapper;
         beforeEach(() => {
             wrapper = shallow(<HeroesContainer pageSize="10" />);
-            fetchMarvelHeroesSpy = jest.spyOn(wrapper.instance(), 'fetchMarvelHeroes');
         });
 
-        test('calls "fetchMarvelHeroes" passing "offset"', () => {
+        test('calls setState setting "offset"', () => {
             wrapper.instance().fetchHeroesPage(3);
-            expect(fetchMarvelHeroesSpy).toHaveBeenCalledTimes(1);
-            expect(fetchMarvelHeroesSpy).toHaveBeenCalledWith({
+            expect(wrapper.state('query')).toEqual({
                 offset: 20,
             });
         });
 
-        test('calls "fetchMarvelHeroes" passing "nameStartsWith"', () => {
-            wrapper.instance().fetchHeroesPage(4, 'Test');
-            expect(fetchMarvelHeroesSpy).toHaveBeenCalledTimes(1);
-            expect(fetchMarvelHeroesSpy).toHaveBeenCalledWith({
+        test('calls setState keeping "search" state', () => {
+            wrapper.setState({
+                query: {
+                    search: 'Test',
+                },
+            });
+            wrapper.instance().fetchHeroesPage(4);
+            expect(wrapper.state('query')).toEqual({
                 offset: 30,
-                nameStartsWith: 'Test',
+                search: 'Test',
             });
         });
     });
 
     describe('handleSearchChanged', () => {
-        test('changes "fetchHeroesPage"', () => {
+        test('calls setState', () => {
             const wrapper = shallow(<HeroesContainer />);
-            const fetchHeroesPageSpy = jest.spyOn(wrapper.instance(), 'fetchHeroesPage');
             wrapper.instance().handleSearchChanged('Testing');
-            expect(fetchHeroesPageSpy).toHaveBeenCalledTimes(1);
-            expect(fetchHeroesPageSpy).toHaveBeenCalledWith(1, 'Testing');
+            expect(wrapper.state('query')).toEqual({
+                search: 'Testing',
+                offset: 0,
+            });
         });
     });
 });

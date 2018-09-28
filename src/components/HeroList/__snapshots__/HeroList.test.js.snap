@@ -1,18 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HeroList render renders properly with no results 1`] = `
-<div
+<main
   className="hero-list"
   tabIndex="-1"
 >
   <h2>
     No results found!
   </h2>
-</div>
+</main>
 `;
 
 exports[`HeroList render renders properly with results 1`] = `
-<div
+<main
   className="hero-list"
   tabIndex="-1"
 >
@@ -46,5 +46,5 @@ exports[`HeroList render renders properly with results 1`] = `
       onClick={[Function]}
     />
   </div>
-</div>
+</main>
 `;

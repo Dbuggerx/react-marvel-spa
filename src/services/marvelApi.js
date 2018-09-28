@@ -7,6 +7,9 @@ const imageSizes = {
     big: 'portrait_uncanny',
 };
 
+/**
+ * Fetches data and returns the extracted JSON from the response
+ */
 async function getJsonFromUrl(url: string) {
     const response = await fetch(url);
     if (!response.ok) {

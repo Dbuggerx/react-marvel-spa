@@ -12,8 +12,11 @@ type Props = {
     onHeroClick: (hero: Hero) => void,
 };
 
+/**
+ * Renders a list of HeroCard
+ */
 const HeroList: StatelessFunctionalComponent<Props> = (props: Props) => (
-    <div className="hero-list" tabIndex="-1">
+    <main className="hero-list" tabIndex="-1">
         {props.heroes.length === 0 && <h2>No results found!</h2>}
         {props.heroes.length > 0 &&
             props.heroes.map(hero => (
@@ -21,7 +24,7 @@ const HeroList: StatelessFunctionalComponent<Props> = (props: Props) => (
                     <HeroCard onClick={props.onHeroClick} hero={hero} imageUrl={props.getThumbnailUrl(hero)} />
                 </div>
             ))}
-    </div>
+    </main>
 );
 
 HeroList.displayName = 'HeroList';

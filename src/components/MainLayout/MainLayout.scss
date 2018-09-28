@@ -1,4 +1,4 @@
-@import '../variables';
+@import '../scss/variables';
 
 .main-layout {
   display: grid;
@@ -12,37 +12,10 @@
   height: 100%;
   width: 100%;
   background: map-get($colors, primary-bg);
-  color: map-get($colors, text-color);
+  color: map-get($colors, primary-fg);
   max-height: inherit;
   padding: 15px;
   box-sizing: border-box;
-
-  @media #{map-get($breakpoints, small)} {
-    grid-template-areas:
-      'main-layout-search'
-      'main-layout-list'
-      'main-layout-pagination'
-      'main-layout-info';
-
-    grid-template-columns: 1fr;
-    grid-template-rows: 40px 1fr 40px min-content;
-
-    &__search {
-      grid-area: main-layout-search;
-    }
-
-    &__list {
-      grid-area: main-layout-list;
-    }
-
-    &__pagination {
-      grid-area: main-layout-pagination;
-    }
-
-    &__info {
-      grid-area: main-layout-info;
-    }
-  }
 
   &__search {
     grid-area: main-layout-search;
@@ -63,5 +36,23 @@
 
   &__info {
     grid-area: main-layout-info;
+    margin-left: 15px;
+  }
+
+  @supports (display: grid) {
+    &__info {
+      margin-left: 0;
+    }
+
+    @media #{map-get($breakpoints, small)} {
+      grid-template-areas:
+        'main-layout-search'
+        'main-layout-list'
+        'main-layout-pagination'
+        'main-layout-info';
+
+      grid-template-columns: 1fr;
+      grid-template-rows: 40px 1fr 40px min-content;
+    }
   }
 }

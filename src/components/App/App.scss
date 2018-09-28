@@ -1,4 +1,4 @@
-@import '../variables';
+@import '../scss/variables';
 
 .app {
   background: url('https://i.annihil.us/u/prod/marvel/choosemarvelquiz/images/comicpanelsdark.png')
@@ -8,6 +8,7 @@
   padding: 15px 55px;
   position: relative;
   box-sizing: border-box;
+  font-family: 'Bangers', cursive;
 
   @media #{map-get($breakpoints, small)} {
     padding: 15px;

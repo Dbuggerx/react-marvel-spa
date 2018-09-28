@@ -1,28 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NameList renders properly 1`] = `
-<div>
-  Filter:
-  <input
-    onChange={[Function]}
-    placeholder="Filter"
-    type="text"
-    value=""
+<section
+  className="name-list"
+>
+  <h2
+    className="name-list__title"
   />
+  <aside
+    className="name-list__filter"
+  >
+    Filter:
+    <input
+      className="name-list__filter-input"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+  </aside>
   <div
+    className="name-list__item"
     key="aaa"
   >
     aaa
   </div>
   <div
+    className="name-list__item"
     key="bbb"
   >
     bbb
   </div>
   <div
+    className="name-list__item"
     key="ccc"
   >
     ccc
   </div>
-</div>
+</section>
 `;

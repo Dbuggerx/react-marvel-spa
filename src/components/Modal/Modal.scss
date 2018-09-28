@@ -1,4 +1,5 @@
-@import '../variables';
+@import '../scss/variables';
+@import '../scss/placeholders';
 
 .modal {
   background: rgba(53, 24, 22, 0.8);
@@ -28,20 +29,20 @@
     position: relative;
     overflow: auto;
     border: 0;
-    padding: 0;
+    padding: 15px;
     width: unset;
     height: unset;
+
+    @media #{map-get($breakpoints, small)} {
+      margin: 5vh;
+    }
   }
 
   &__close {
+    @extend %unstyled-button;
     position: absolute;
     right: 15px;
-    top: 15px;
-    background: none;
-    color: inherit;
-    border: none;
-    padding: 0;
-    cursor: pointer;
+    top: 15px;    
     font-size: 2em;
     line-height: 1em;
   }
@@ -49,9 +50,7 @@
   &__title {
     line-height: 2em;
     font-size: 2em;
-  }
-
-  &__content {
-    font-size: 1.5em;
+    text-align: center;
+    color: map-get($colors, marvel-red);
   }
 }

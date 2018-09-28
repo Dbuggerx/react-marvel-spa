@@ -1,7 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ErrorMessage renders properly 1`] = `
-<h1>
-  This is a test
-</h1>
+<div
+  className="error-message"
+>
+  <div
+    className="error-message__description"
+  >
+    <h1>
+      This is a test
+    </h1>
+  </div>
+</div>
 `;

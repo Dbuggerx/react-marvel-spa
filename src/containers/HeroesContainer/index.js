@@ -31,9 +31,16 @@ type State = {
         total: number,
         count: number,
     },
+    query: ?{
+        search?: string,
+        offset: number,
+    },
     attribution: string,
 };
 
+/**
+ * Handles the data for the Heroes and passes props to children components
+ */
 export default class HeroListContainer extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
@@ -42,12 +49,19 @@ export default class HeroListContainer extends Component<Props, State> {
             isLoading: true,
             selection: null,
             pagination: null,
+            query: null,
             attribution: 'Data provided by Marvel. © 2014 Marvel',
         };
     }
 
     componentDidMount() {
         this.fetchMarvelHeroes();
+    }
+
+    componentDidUpdate(prevProps: Props, prevState: State) {
+        if (this.state.query && this.state.query !== prevState.query) {
+            this.fetchMarvelHeroes(this.state.query.offset, this.state.query.search || '');
+        }
     }
 
     componentWillUnmount() {
@@ -76,25 +90,34 @@ export default class HeroListContainer extends Component<Props, State> {
     };
 
     handleSearchChanged = (param: string) => {
-        this.fetchHeroesPage(1, param);
-    };
-
-    fetchHeroesPage = (page: number, searchParam?: string) => {
-        this.fetchMarvelHeroes({
-            offset: this.props.pageSize * (page - 1),
-            ...(searchParam && searchParam.length > 0 ? { nameStartsWith: searchParam } : {}),
+        this.setState({
+            query: {
+                search: param,
+                offset: 0,
+            },
         });
     };
 
-    async fetchMarvelHeroes(params?: { offset: number, nameStartsWith?: string }) {
+    fetchHeroesPage = (page: number) => {
+        this.setState({
+            query: {
+                ...this.state.query,
+                offset: this.props.pageSize * (page - 1),
+            },
+        });
+    };
+
+    async fetchMarvelHeroes(offset: number = 0, nameStartsWith: string = '') {
         this.setState({
             isLoading: true,
         });
 
         try {
+            // Wrapping the result promise in a "CancelablePromise", in order to be safe to unmount
             this.cancelableFetch = new CancelablePromise(fetchHeros({
                 limit: this.props.pageSize,
-                ...params,
+                offset,
+                nameStartsWith,
             }));
             const heroesResult = await this.cancelableFetch.promise;
             this.setState({
@@ -132,7 +155,12 @@ export default class HeroListContainer extends Component<Props, State> {
                     </Modal>
                 )}
                 <MainLayout
-                    search={<SearchContainer onSearchChanged={this.handleSearchChanged} />}
+                    search={
+                        <SearchContainer
+                            lastSearch={this.state.query ? this.state.query.search || '' : ''}
+                            onSearchChanged={this.handleSearchChanged}
+                        />
+                    }
                     list={
                         <HeroList
                             onHeroClick={this.handleHeroClick}

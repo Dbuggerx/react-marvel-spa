@@ -1,0 +1,20 @@
+%unstyled-button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 2em;
+  line-height: 1em;
+  width: 20px;
+
+  svg {
+    fill: map-get($colors, marvel-red);
+  }
+
+  &:hover {
+    svg {
+      fill: lighten(map-get($colors, marvel-red), 15%);
+    }
+  }
+}

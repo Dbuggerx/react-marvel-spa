@@ -5,16 +5,18 @@ import SearchForm from '../../components/SearchForm';
 
 type Props = {
     onSearchChanged: (param: string) => void,
+    lastSearch: string,
 };
 
+/**
+ * Handles search data
+ */
 export default class SearchContainer extends Component<Props> {
-    lastSearch: string;
-
     handleSearch = (param: string) => {
-        if (param.toLowerCase() !== this.lastSearch) this.props.onSearchChanged(param);
+        if (param.toLowerCase() !== this.props.lastSearch) this.props.onSearchChanged(param);
     };
 
     render() {
-        return <SearchForm onSearch={this.handleSearch} />;
+        return <SearchForm lastSearch={this.props.lastSearch} onSearch={this.handleSearch} />;
     }
 }

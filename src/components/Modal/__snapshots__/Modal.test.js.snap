@@ -31,7 +31,6 @@ exports[`Modal render renders properly 1`] = `
       Testing
     </div>
     <div
-      className="modal__content"
       id="modal-content"
     >
       Test
