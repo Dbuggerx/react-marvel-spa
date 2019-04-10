@@ -3,7 +3,7 @@ import type { HeroesResult, Hero } from './types';
 
 const apiKey = '570b1cdca67e5243b4db4425b1b4ee4e';
 const imageSizes = {
-    small: 'standard_medium',
+    small: 'standard_fantastic',
     big: 'portrait_uncanny',
 };
 

@@ -14,28 +14,48 @@
   color: map-get($colors, primary-fg);
   max-height: inherit;
   padding: 15px;
-
   box-sizing: border-box;
+  position: relative;
+
+  &::before{
+    background: url('https://i.annihil.us/u/prod/marvel/choosemarvelquiz/images/comicpanelsdark.png');
+    content: '';
+    opacity: 0.3;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+  }
 
   &__search {
     grid-area: main-layout-search;
+    z-index: 2;
   }
 
   &__list {
     grid-area: main-layout-list;
+    z-index: 2;
   }
 
   &__pagination {
     grid-area: main-layout-pagination;
+    z-index: 2;
     display: flex;
     flex-flow: row nowrap;
     align-content: center;
     justify-content: center;
     align-items: center;
+    margin-top: solid 1px red;
+
   }
 
   &__info {
     grid-area: main-layout-info;
+    z-index: 2;
     margin-left: 15px;
   }
 

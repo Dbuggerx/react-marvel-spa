@@ -1,15 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ErrorMessage renders properly 1`] = `
-<div
-  className="loading-indicator"
->
-  <h1>
-    Loading...
-  </h1>
-</div>
-`;
-
 exports[`LoadingIndicator renders properly 1`] = `
 <div
   className="loading-indicator"

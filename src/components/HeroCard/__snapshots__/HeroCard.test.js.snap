@@ -6,12 +6,13 @@ exports[`HeroCard renders properly 1`] = `
   onClick={[Function]}
   onKeyUp={[Function]}
   role="button"
+  style={
+    Object {
+      "backgroundImage": "url(the/img/url)",
+    }
+  }
   tabIndex="0"
 >
-  <img
-    alt="3-D Man"
-    src="the/img/url"
-  />
   <div
     className="hero-card__label"
   >

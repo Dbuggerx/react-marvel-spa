@@ -91,7 +91,7 @@ describe('marvelApi', () => {
         };
 
         test('it returns URL for small image', () => {
-            expect(marvelApi.getImageUrl(hero, 'small')).toMatch(/path\/to\/the\/image\/standard_medium\.jpg\?apikey=.{32}/);
+            expect(marvelApi.getImageUrl(hero, 'small')).toMatch(/path\/to\/the\/image\/standard_fantastic\.jpg\?apikey=.{32}/);
         });
 
         test('it returns URL for big image', () => {

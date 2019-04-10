@@ -8,7 +8,7 @@
   height: 100%;
   box-sizing: border-box;
   background: map-get($colors, primary-bg);
-  color: map-get($colors, highlight-bg);
+  color: map-get($colors, highlight-fg);
 
   &__title, &__filter-input {
     margin: 5px 0;
