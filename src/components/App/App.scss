@@ -2,8 +2,10 @@
 
 .app {
   font-family: 'Bangers', cursive;
-  background: url('https://i.annihil.us/u/prod/marvel/choosemarvelquiz/images/comicpanelsdark.png')
-    map-get($colors, secondary-bg);
+  background: url('//i.annihil.us/u/prod/marvel/html_blocks_assets/loyalty/reg-bg.jpg') black;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
   min-height: 100vh;
   max-width: 100vw;
   padding: 15px 55px;
@@ -14,5 +16,7 @@
 
   @media #{map-get($breakpoints, small)} {
     padding: 15px;
+    background-position: top left;
+    background-size: auto;
   }
 }

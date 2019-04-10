@@ -18,3 +18,16 @@
     }
   }
 }
+
+%text-colored-button {
+  @extend %unstyled-button;
+  svg {
+    fill: map-get($colors, primary-fg);
+  }
+
+  &:hover {
+    svg {
+      fill: lighten(map-get($colors, primary-fg), 15%);
+    }
+  }
+}

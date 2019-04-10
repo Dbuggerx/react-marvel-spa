@@ -27,7 +27,7 @@
   }
 
   &__button {
-    @extend %unstyled-button;
+    @extend %text-colored-button;
     margin-left: 15px;
   }
 }
