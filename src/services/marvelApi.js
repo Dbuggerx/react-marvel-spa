@@ -37,5 +37,8 @@ export async function fetchHeroById(id: number): Promise<HeroesResult> {
 }
 
 export function getImageUrl(hero: Hero, size: $Keys<typeof imageSizes>) {
-    return `${hero.thumbnail.path}/${imageSizes[size]}.${hero.thumbnail.extension}?apikey=${apiKey}`;
+    return `${hero.thumbnail.path}/${imageSizes[size]}.${hero.thumbnail.extension}?apikey=${apiKey}`.replace(
+        'http:',
+        '',
+    );
 }

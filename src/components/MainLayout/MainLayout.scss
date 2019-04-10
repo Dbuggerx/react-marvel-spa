@@ -17,7 +17,8 @@
   box-sizing: border-box;
   position: relative;
 
-  &::before{
+  &::after{
+    pointer-events: none;
     background: url('https://i.annihil.us/u/prod/marvel/choosemarvelquiz/images/comicpanelsdark.png');
     content: '';
     opacity: 0.3;
@@ -34,16 +35,19 @@
   &__search {
     grid-area: main-layout-search;
     z-index: 2;
+    position: relative;
   }
 
   &__list {
     grid-area: main-layout-list;
     z-index: 2;
+    position: relative;
   }
 
   &__pagination {
     grid-area: main-layout-pagination;
     z-index: 2;
+    position: relative;
     display: flex;
     flex-flow: row nowrap;
     align-content: center;
@@ -56,6 +60,7 @@
   &__info {
     grid-area: main-layout-info;
     z-index: 2;
+    position: relative;
     margin-left: 15px;
   }
 
