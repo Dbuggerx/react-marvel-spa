@@ -2,7 +2,7 @@
 
 .main-layout {
   display: grid;
-  grid-template-columns: 1fr minmax(50px, 15vw);
+  grid-template-columns: 1fr minmax(80px, 20vw);
   grid-template-rows: 40px 1fr 40px;
   grid-template-areas:
     'main-layout-search main-layout-info'
@@ -10,7 +10,7 @@
     'main-layout-pagination main-layout-info';
   height: 100%;
   width: 100%;
-  background: rgba(map-get($colors, primary-bg), 0.8);
+  background: rgba(map-get($colors, primary-bg), 0.85);
   color: map-get($colors, primary-fg);
   max-height: inherit;
   padding: 15px;
@@ -32,8 +32,6 @@
     align-content: center;
     justify-content: center;
     align-items: center;
-    margin-top: solid 1px red;
-
   }
 
   &__info {
@@ -46,6 +44,10 @@
 
     &__info {
       margin-left: 0;
+    }
+
+    @media #{map-get($breakpoints, medium)} {
+      grid-template-columns: 1fr minmax(200px, 15vw);
     }
 
     @media #{map-get($breakpoints, small)} {

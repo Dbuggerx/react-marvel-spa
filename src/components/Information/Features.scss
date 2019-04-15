@@ -1,0 +1,27 @@
+@import '../scss/variables';
+
+.features {
+  &__title {
+    color: map-get($colors, marvel-red);
+    padding-top: 1em;
+    border-top: solid 1px map-get($colors, marvel-red);
+    display: flex;
+    flex-flow: row nowrap;
+    font-size: 1.3em;
+  }
+
+  &__icon {
+    height: 1.3em;
+    fill: map-get($colors, marvel-red);
+    margin-right: 0.5em;
+  }
+
+  &__list {
+    padding-left: 20px;
+    font-weight: 400;
+  }
+
+  &__item {
+    margin-bottom: 0.35em;
+  }
+}

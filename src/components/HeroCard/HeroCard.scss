@@ -1,6 +1,7 @@
 @import '../scss/variables';
 
 .hero-card {
+  font-family: 'Bangers', cursive;
   background: map-get($colors, highlight-bg);
   color: map-get($colors, highlight-fg);
   text-align: center;

@@ -2,6 +2,8 @@
 
 import React from 'react';
 import type { StatelessFunctionalComponent } from 'react';
+import './Attribution.scss';
+import './Features.scss';
 
 type Props = {
     attribution: string,
@@ -21,7 +23,66 @@ const Information: StatelessFunctionalComponent<Props> = (props: Props) => (
                 />
             </g>
         </svg>
-        <p>{props.attribution}</p>
+        <p className="attribution">{props.attribution}</p>
+        <div className="features">
+            <p className="features__title">
+                <svg viewBox="0 0 24 24" className="features__icon">
+                    <path
+                        d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z"
+                    />
+                </svg>
+                <strong>Features</strong>
+            </p>
+            <ul className="features__list">
+                <li className="features__item">retrieves data from an API;</li>
+                <li className="features__item">
+                    shows a grid of items (using <em>Flexbox</em>) with four items per row and gracefully degrading to a
+                    vertical list on narrow screens;
+                </li>
+                <li className="features__item">
+                    uses <em>CSS Grid</em> for the main responsive layout;
+                </li>
+                <li className="features__item">
+                    styles created using{' '}
+                    <a href="https://sass-lang.com/" target="_blank" rel="noopener noreferrer">
+                        SASS
+                    </a>{' '}
+                    with the{' '}
+                    <a href="http://getbem.com/" target="_blank" rel="noopener noreferrer">
+                        BEM methodology
+                    </a>
+                    ;
+                </li>
+                <li className="features__item">has a form that allows filtering the data set;</li>
+                <li className="features__item">
+                    shows item details (large image with information available from the APIs response) in a modal when
+                    an item is clicked;
+                </li>
+                <li className="features__item">
+                    good test coverage, using{' '}
+                    <a href="https://jestjs.io/" target="_blank" rel="noopener noreferrer">
+                        Jest
+                    </a>{' '}
+                    and{' '}
+                    <a href="https://airbnb.io/enzyme/" target="_blank" rel="noopener noreferrer">
+                        Enzyme
+                    </a>
+                    ;
+                </li>
+                <li className="features__item">
+                    uses{' '}
+                    <a href="https://flow.org/" target="_blank" rel="noopener noreferrer">
+                        Flow
+                    </a>{' '}
+                    for static type checking;
+                </li>
+                <li className="features__item">works in IE11 and up;</li>
+                <li className="features__item">uses web fonts (Google Fonts);</li>
+                <li className="features__item">third-party package usage kept to a minimum;</li>
+                <li className="features__item">no state managers;</li>
+                <li className="features__item">UI is accessible by keyboard.</li>
+            </ul>
+        </div>
     </aside>
 );
 

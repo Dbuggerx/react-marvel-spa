@@ -10,7 +10,7 @@ import HeroesContainer from '../../containers/HeroesContainer';
  */
 const App: StatelessFunctionalComponent<*> = () => (
     <div className="app">
-        <HeroesContainer pageSize={10} />
+        <HeroesContainer pageSize={16} />
     </div>
 );
 

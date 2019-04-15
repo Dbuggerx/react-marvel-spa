@@ -1,7 +1,8 @@
 @import '../scss/variables';
 
 .app {
-  font-family: 'Bangers', cursive;
+  font-family: 'Kalam', cursive;
+  font-weight: 400;
   background: url('//i.annihil.us/u/prod/marvel/html_blocks_assets/loyalty/reg-bg.jpg') black;
   background-position: top center;
   background-repeat: no-repeat;
@@ -19,4 +20,22 @@
     background-position: top left;
     background-size: auto;
   }
+}
+
+a {
+  color: darken(map-get($colors, marvel-red), 5%);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: darken(map-get($colors, marvel-red), 10%);
+}
+
+a:active {
+  color: map-get($colors, marvel-red);
+}
+
+a:visited {
+  color: darken(map-get($colors, marvel-red), 10%);
 }

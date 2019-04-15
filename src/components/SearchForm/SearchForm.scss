@@ -4,13 +4,12 @@
 .search-form {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
   align-items: center;
-  width: 80%;
+  max-width: 25vw;
   height: 40px;
 
   @media #{map-get($breakpoints, medium)} {
-    width: 100%;
+    max-width: 100%;
   }
 
   &__label {
@@ -29,5 +28,6 @@
   &__button {
     @extend %text-colored-button;
     margin-left: 15px;
+    min-width: 20px;
   }
 }
